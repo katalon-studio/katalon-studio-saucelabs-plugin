@@ -1,10 +1,10 @@
 {
-   "name": "Katalon Saucelabs Integration",
+   "name": "Katalon Sauce Labs Integration",
    "listeners": ["SauceLabsTestListener"],
    "configuration": {
       "settingId": "com.kms.katalon.keyword.Saucelabs-keywords",
       "settingPage": {
-         "name": "Saucelabs Integration",
+         "name": "Sauce Labs Integration",
          "components": [
             {
                "key": "accessKey",
@@ -45,7 +45,7 @@
             {
                "key": "Sauce Labs Desired Capabilities Generator",
                "type": "button",
-               "label": "Generate Sauce Labs desired capabilities",
+               "label": "Generate Sauce Labs Custom Profile",
 	            "implementationClassPath": "com.kms.katalon.keyword.saucelabs.SauceLabsButtonSelectionEventHandler",
                "defaultValue": ""
             }
