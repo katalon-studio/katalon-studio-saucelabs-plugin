@@ -32,7 +32,7 @@ import com.kms.katalon.core.testobject.RestRequestObjectBuilder
 import internal.GlobalVariable
 
 public class SauceLabsUtils {
-	public static String SAUCE_LABS_RUN_CONFIG_NAME = "Sauce Labs";
+	public static String SAUCE_LABS_RUN_CONFIG_NAME = "saucelabs_";
 
 	public static String getAllJobs(boolean full) {
 
