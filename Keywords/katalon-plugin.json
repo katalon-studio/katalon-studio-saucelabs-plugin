@@ -1,55 +1,167 @@
 {
-   "name": "Katalon Sauce Labs Integration",
-   "listeners": ["SauceLabsTestListener"],
-   "configuration": {
-      "settingId": "com.kms.katalon.keyword.Saucelabs-keywords",
-      "settingPage": {
-         "name": "Sauce Labs Integration",
-         "components": [
+  "id": "saucelabs-katalon",
+  "name": "Katalon Sauce Labs Integration",
+  "listeners": ["SauceLabsTestListener"],
+  "configuration": {
+    "settingId": "com.kms.katalon.keyword.Saucelabs-keywords",
+    "settingPage": {
+      "name": "Sauce Labs Integration",
+      "components": [
+        {
+          "key": "accessKey",
+          "type": "secret",
+          "label": "API Key",
+          "defaultValue": ""
+        },
+        {
+          "key": "username",
+          "type": "text",
+          "label": "Username",
+          "defaultValue": ""
+        },
+        {
+          "key": "platform",
+          "type": "optionMenu",
+          "label": "Choose platform",
+          "childComponents": [
             {
-               "key": "accessKey",
-               "type": "secret",
-               "label": "API Key",
-               "defaultValue": ""
+              "key": "web",
+              "type": "option",
+              "label": "Web",
+              "childComponents": [
+                {
+                  "key": "web_profileName",
+                  "type": "text",
+                  "label": "Profile name",
+                  "defaultValue": "default"
+                },
+
+                {
+                  "key": "web_browserName",
+                  "type": "text",
+                  "label": "Browser's name",
+                  "defaultValue": "Safari"
+                },
+                {
+                  "key": "web_platform",
+                  "type": "text",
+                  "label": "Platform",
+                  "defaultValue": "macOS 10.13"
+                },
+                {
+                  "key": "web_version",
+                  "type": "text",
+                  "label": "Version",
+                  "defaultValue": "11.1"
+                },
+                {
+                  "key": "web_name",
+                  "type": "text",
+                  "label": "Job's name",
+                  "defaultValue": "Default Job"
+                }
+              ]
             },
             {
-               "key": "username",
-               "type": "text",
-               "label": "Username",
-               "defaultValue": ""
-            },
-            {
-               "key": "browserName",
-               "type": "text",
-               "label": "Browser's name",
-               "defaultValue": "Safari"
-            },
-            {
-               "key": "platform",
-               "type": "text",
-               "label": "Platform",
-               "defaultValue": "macOS 10.13"
-            },
-            {
-               "key": "version",
-               "type": "text",
-               "label": "Version",
-               "defaultValue": "11.1"
-            },
-            {
-               "key": "name",
-               "type": "text",
-               "label": "Job's name",
-               "defaultValue": "Default Job"
-            },
-            {
-               "key": "Sauce Labs Desired Capabilities Generator",
-               "type": "button",
-               "label": "Generate Sauce Labs Custom Profile",
-	            "implementationClassPath": "com.kms.katalon.keyword.saucelabs.SauceLabsButtonSelectionEventHandler",
-               "defaultValue": ""
+              "key": "mobile",
+              "type": "option",
+              "label": "Mobile",
+              "childComponents": [
+                {
+                  "key": "mobile_profileName",
+                  "type": "text",
+                  "label": "Profile name",
+                  "defaultValue": "default"
+                },
+                {
+                  "key": "mobile_appiumVersion",
+                  "type": "text",
+                  "label": "Appium Version",
+                  "defaultValue": "1.5.3"
+                },
+                {
+                  "key": "mobile_browserName",
+                  "type": "text",
+                  "label": "Browser's name",
+                  "defaultValue": "Safari"
+                },
+                {
+                  "key": "mobile_deviceName",
+                  "type": "text",
+                  "label": "Device name",
+                  "defaultValue": "Google Nexus 7 HD Emulator"
+                },
+                {
+                  "key": "mobile_platformName",
+                  "type": "text",
+                  "label": "Platform Name",
+                  "defaultValue": "iOS"
+                },
+                {
+                  "key": "mobile_platformVersion",
+                  "type": "text",
+                  "label": "Platform Version",
+                  "defaultValue": "9.1"
+                },
+                {
+                  "key": "mobile_app",
+                  "type": "text",
+                  "label": "Application Path",
+                  "defaultValue": "sauce-storage:my_app.zip"
+                },
+                {
+                  "key": "mobile_name",
+                  "type": "text",
+                  "label": "Job's name",
+                  "defaultValue": "Default Job"
+                }
+              ]
             }
-         ]
-      }
-   }
+          ]
+        },
+        {
+          "key": "mobile_lblUpload",
+          "type": "label",
+          "label": "Upload application ONCE if name and location is not empty, and ..."
+        },
+        {
+          "key": "mobile_overwrite",
+          "type": "checkbox",
+          "label": "Upload application EVERYTIME before running every test",
+          "defaultValue": "false"
+        },
+        {
+          "key": "placeholder",
+          "type": "label",
+          "label": ""
+        },
+        {
+           "key": "mobile_filename",
+           "type": "text",
+           "label": "App name",
+           "defaultValue": "SuperApp.zip or myApp.apk"
+        },
+        {
+           "key": "mobile_filepath",
+            "type": "text",
+            "label": "Path to app file",
+            "defaultValue": "path/to/your_file_name"
+        },
+        {
+           "key": "mobile_browseFilepath",
+            "type": "button",
+            "label": "Browse",
+            "implementationClassPath": "com.kms.katalon.keyword.saucelabs.SauceLabsBrowseForAppFileButtonSelectionEventHandler",
+            "defaultValue": ""
+        },
+        {
+          "key": "generateProfile",
+          "type": "button",
+          "label": "Generate Sauce Labs Custom Profile",
+          "implementationClassPath": "com.kms.katalon.keyword.saucelabs.SauceLabsGenerateProfileButtonSelectionEventHandler",
+          "defaultValue": ""
+        }
+      ]
+    }
+  }
 }
