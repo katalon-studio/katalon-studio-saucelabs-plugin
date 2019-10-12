@@ -46,7 +46,7 @@ public class SauceLabsTestListener {
 	def autoUpdateJobStatus(TestCaseContext testCaseContext) {
 		String runConfigName = (String) RunConfiguration.getProperty("Name");
 		KeywordUtil.logInfo("[SAUCELABS] Current run configuration: " + runConfigName)
-		if(runConfigName.toLowerCase().(SauceLabsUtils.SAUCE_LABS_RUN_CONFIG_NAME)){
+		if(runConfigName.toLowerCase().startsWith(SauceLabsUtils.SAUCE_LABS_RUN_CONFIG_NAME)){
 			KeywordUtil.logInfo("[SAUCELABS] Auto updating job status and information ...")
 			String latestJobId = SauceLabsUtils.getLatestJobId()
 			String status = testCaseContext.getTestCaseStatus()

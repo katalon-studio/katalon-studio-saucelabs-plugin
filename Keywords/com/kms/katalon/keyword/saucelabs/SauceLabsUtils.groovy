@@ -12,6 +12,7 @@ import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
 import com.kms.katalon.core.configuration.RunConfiguration
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.logging.KeywordLogger
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.setting.BundleSettingStore
@@ -33,17 +34,16 @@ import internal.GlobalVariable
 
 public class SauceLabsUtils {
 	public static String SAUCE_LABS_RUN_CONFIG_NAME = "saucelabs_";
-
+	private static KeywordLogger logger = KeywordLogger.getInstance(SauceLabsUtils.class);
 	public static String getAllJobs(boolean full) {
 
 		String projectLocation = RunConfiguration.getProjectDir();
 		BundleSettingStore store = new BundleSettingStore(projectLocation, "com.kms.katalon.keyword.Saucelabs-keywords", true);
 		String username = store.getString("username", "");
 		String accessKey = store.getString("accessKey", "");
-
+		String restApi = store.getString("restApiKey", "https://saucelabs.com/rest/v1/");
 		String auth = "${username}:${accessKey}";
-		String endpoint = "https://saucelabs.com/rest/v1/${username}/jobs";
-
+		String endpoint = restApi + "${username}/jobs";
 		endpoint += full ? "?full=true" : "";
 
 		String requestMethod = "GET";
@@ -53,7 +53,7 @@ public class SauceLabsUtils {
 		TestObjectProperty header1 = new TestObjectProperty("Authorization", ConditionType.EQUALS, "Basic " + authStringEnc);
 		TestObjectProperty header2 = new TestObjectProperty("Accept", ConditionType.EQUALS, "application/json");
 		ArrayList defaultHeaders = Arrays.asList(header1, header2);
-
+		logger.logInfo("Using endpoint: " + endpoint);
 		def builder = new RestRequestObjectBuilder();
 		def requestObject = builder
 				.withRestRequestMethod(requestMethod)
@@ -76,20 +76,20 @@ public class SauceLabsUtils {
 		BundleSettingStore store = new BundleSettingStore(projectLocation, "com.kms.katalon.keyword.Saucelabs-keywords", true);
 		String username = store.getString("username", "");
 		String accessKey = store.getString("accessKey", "");
+		String restApi = store.getString("restApiKey", "https://saucelabs.com/rest/v1/");
 
 		String auth = "${username}:${accessKey}";
-		String endpoint = "https://saucelabs.com/rest/v1/${username}/jobs/" + jobId;
+		String endpoint = restApi + "${username}/jobs/" + jobId;
 		String requestMethod = "PUT";
 		byte[] authEncBytes = Base64.getEncoder().encode(auth.getBytes());
 		String authStringEnc = new String(authEncBytes);
-
 		TestObjectProperty header1 = new TestObjectProperty("Authorization", ConditionType.EQUALS, "Basic " + authStringEnc);
 		TestObjectProperty header2 = new TestObjectProperty("Content-Type", ConditionType.EQUALS, "application/json");
 		TestObjectProperty header3 = new TestObjectProperty("Accept", ConditionType.EQUALS, "application/json");
 		ArrayList defaultHeaders = Arrays.asList(header1, header2, header3);
 
 		def textBodyContent = JsonOutput.toJson(argsMap);
-
+		logger.logInfo("Using endpoint: " + endpoint);
 		def builder = new RestRequestObjectBuilder();
 		def requestObject = builder
 				.withRestRequestMethod(requestMethod)

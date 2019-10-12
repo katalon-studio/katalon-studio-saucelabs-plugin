@@ -6,6 +6,7 @@
    <UUID>d215c47c-c3ef-4759-8f29-87dc0c0c915b</UUID>
    <migratedVersion>5.9.0</migratedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
+   <projectFileLocation>/Users/thanhto/Documents/repository/work/katalon-studio-saucelabs-plugin/katalon-studio-saucelabs-plugin.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>
