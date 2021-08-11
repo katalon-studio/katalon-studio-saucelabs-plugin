@@ -16,3 +16,6 @@ output
 .classpath
 
 .project
+.settings
+
+.cache
