@@ -27,19 +27,19 @@
                "key": "browserName",
                "type": "text",
                "label": "Browser's name",
-               "defaultValue": "Safari"
+               "defaultValue": "Chrome"
             },
             {
                "key": "platform",
                "type": "text",
                "label": "Platform",
-               "defaultValue": "macOS 10.13"
+               "defaultValue": "Windows 11"
             },
             {
                "key": "version",
                "type": "text",
                "label": "Version",
-               "defaultValue": "11.1"
+               "defaultValue": "latest"
             },
             {
                "key": "name",
@@ -53,10 +53,10 @@
                "label": "Global configuration"
             },
             {
-					"key": "restApiKey",
+					"key": "dataCenter",
 					"type": "text",
-					"label": "Sauce Labs REST API url",
-					"defaultValue": "https://saucelabs.com/rest/v1/"
+					"label": "Data Center (e.g. us-west-1, us-east-1, eu-central-1)",
+					"defaultValue": "us-west-1"
 				},
             {
                "key": "Sauce Labs Desired Capabilities Generator",

@@ -29,19 +29,24 @@ public class SauceLabsButtonSelectionEventHandler implements IControlSelectionEv
 	void handle(IActionProvider actionProvider, Map<String, Object> dataFields, IContext context) {
 		CustomProfile profile = new CustomProfile();
 		def customCapabilities = [:];
+		def capabilities = ['sauce:options': customCapabilities];
+
+		String dataCenter = dataFields.getOrDefault("dataCenter", SauceLabsUtils.DEFAULT_DATA_CENTER);
+		capabilities['remoteWebDriverType'] = 'Selenium';
+		capabilities['remoteWebDriverUrl'] = SauceLabsUtils.getWebDriverEndpoint(dataCenter);
+
+		capabilities['browserName'] = dataFields.getOrDefault("browserName", "");
+		capabilities['browserVersion'] = dataFields.getOrDefault("version", "");
+		capabilities['platformName'] = dataFields.getOrDefault("platform", "");
+
 		customCapabilities['username'] = dataFields.getOrDefault("username", "");
 		customCapabilities['accessKey'] = dataFields.getOrDefault("accessKey", "");
-		customCapabilities['browserName'] = dataFields.getOrDefault("browserName", "");
-		customCapabilities['platform'] = dataFields.getOrDefault("platform", "");
-		customCapabilities['version'] = dataFields.getOrDefault("version", "");
 		customCapabilities['name'] = dataFields.getOrDefault("name", "");
-		customCapabilities['remoteWebDriverType'] = 'Selenium';
-		customCapabilities['remoteWebDriverUrl'] = 'http://ondemand.saucelabs.com:80/wd/hub';
 
 		profile.setName(SauceLabsUtils.SAUCE_LABS_RUN_CONFIG_NAME + "default");
 		profile.setDriverType("Remote");
-		profile.setDesiredCapabilities(customCapabilities);
 
+		profile.setDesiredCapabilities(capabilities);
 		actionProvider.saveCustomProfile(profile);
 	}
 }

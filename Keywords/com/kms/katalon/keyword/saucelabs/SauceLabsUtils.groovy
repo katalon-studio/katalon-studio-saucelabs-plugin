@@ -34,14 +34,29 @@ import internal.GlobalVariable
 
 public class SauceLabsUtils {
 	public static String SAUCE_LABS_RUN_CONFIG_NAME = "saucelabs_";
+	public static String DEFAULT_DATA_CENTER = "us-west-1";
 	private static KeywordLogger logger = KeywordLogger.getInstance(SauceLabsUtils.class);
+
+	public static String getDataCenter(BundleSettingStore store) {
+		return store.getString("dataCenter", DEFAULT_DATA_CENTER);
+	}
+
+	public static String getRestApiEndpoint(String dataCenter) {
+		return "https://api.${dataCenter}.saucelabs.com/rest/v1/";
+	}
+
+	public static String getWebDriverEndpoint(String dataCenter) {
+		return "https://ondemand.${dataCenter}.saucelabs.com:443/wd/hub";
+	}
+
 	public static String getAllJobs(boolean full) {
 
 		String projectLocation = RunConfiguration.getProjectDir();
 		BundleSettingStore store = new BundleSettingStore(projectLocation, "com.kms.katalon.keyword.Saucelabs-keywords", true);
 		String username = store.getString("username", "");
 		String accessKey = store.getString("accessKey", "");
-		String restApi = store.getString("restApiKey", "https://saucelabs.com/rest/v1/");
+		String dataCenter = SauceLabsUtils.getDataCenter(store);
+		String restApi = SauceLabsUtils.getRestApiEndpoint(dataCenter);
 		String auth = "${username}:${accessKey}";
 		String endpoint = restApi + "${username}/jobs";
 		endpoint += full ? "?full=true" : "";
@@ -76,7 +91,8 @@ public class SauceLabsUtils {
 		BundleSettingStore store = new BundleSettingStore(projectLocation, "com.kms.katalon.keyword.Saucelabs-keywords", true);
 		String username = store.getString("username", "");
 		String accessKey = store.getString("accessKey", "");
-		String restApi = store.getString("restApiKey", "https://saucelabs.com/rest/v1/");
+		String dataCenter = SauceLabsUtils.getDataCenter(store);
+		String restApi = SauceLabsUtils.getRestApiEndpoint(dataCenter);
 
 		String auth = "${username}:${accessKey}";
 		String endpoint = restApi + "${username}/jobs/" + jobId;

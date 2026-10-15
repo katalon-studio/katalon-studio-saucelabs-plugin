@@ -1,12 +1,10 @@
 plugins {
   id 'java'
   id 'groovy'
-  id 'com.github.johnrengelman.shadow' version '4.0.4'
-  id "com.katalon.gradle-plugin" version "0.0.7"
+  id "com.katalon.gradle-plugin" version "0.2.0"
 }
 
 repositories {
-  jcenter()
   mavenCentral()
 }
 

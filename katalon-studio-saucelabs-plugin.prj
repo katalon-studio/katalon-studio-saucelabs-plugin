@@ -4,9 +4,11 @@
    <name>katalon-studio-saucelabs-plugin</name>
    <tag></tag>
    <UUID>d215c47c-c3ef-4759-8f29-87dc0c0c915b</UUID>
+   <freeLicense>false</freeLicense>
    <migratedVersion>5.9.0</migratedVersion>
+   <modifiedEdition>ENTERPRISE</modifiedEdition>
+   <modifiedVersion>11.5.0</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
-   <projectFileLocation>/Users/thanhto/Documents/repository/work/katalon-studio-saucelabs-plugin/katalon-studio-saucelabs-plugin.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>
@@ -25,5 +27,6 @@
          </systemFolderConfiguration>
       </systemFolderList>
    </sourceContent>
+   <timeStampInProperties>true</timeStampInProperties>
    <type>GENERIC</type>
 </Project>
